@@ -1,0 +1,101 @@
+{%extends 'website/base.html'%}
+{%load static%}
+
+{% block content%}
+
+
+
+<div class="page-top-wrapper">
+    <div class="projects page-top-welcome">
+        <div class="page-top-text">
+            <h2 class="billboard-text">Proiecte</h2>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<section id="filters">
+    <div class="filters-wrapper">
+        <div class="container">
+            <ul class="filters_buttons">
+                <li class="label">Filtrează după</li>
+                <li><a href="#filter-list" class="categories" data-toggle="collapse">Categorii <i class="fal fa-angle-double-down"></i></a></li>
+            </ul>
+            <div id="filter-list" class="collapse">
+                <ul class="category-list">
+
+                    {% if curent_tag == "Toate" %}
+                    <li><a class="tag-active" href="/projects/">Toate</a></li>
+                    {% else %}
+                    <li><a  href="/projects/">Toate</a></li>
+                    {% endif%}
+
+                    {% for tag in tags%}
+
+                    {% if curent_tag == tag %}
+                    <li><a class="tag-active" href="/projects/{{tag.slug}}/">{{tag.name}}</a></li>
+                    {% else %}
+                    <li><a  href="/projects/{{tag.slug}}/">{{tag.name}}</a></li>
+                    {% endif%}
+
+                    {% endfor %}
+                </ul>
+                <hr>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects">
+    <div class="projects-wrapper">
+        <div class="projects-items">
+
+            {%for post in posts%}
+            <div class="item col-lg-4 col-md-6 col-sm-12">
+                <div class="item-wrapper">
+                    <a href="/projects/{{post.tag.slug}}/{{post.slug}}">
+                    <div class="item-image">
+                        <img itemprop="image" src="{{post.cover_photo.url}}" alt="{{post.title}}">
+                    </div>
+                    </a>
+                    <div class="title-wrapper">
+                        <h5 class="entry-title title" itemprop="headline">
+                            <a class="link" href="/projects/{{post.tag.slug}}/{{post.slug}}">{{post.title}}</a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+           {%endfor%}
+        </div>
+
+
+        {% if posts.paginator.num_pages != 1 %}
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+
+              {% if posts.has_previous %}
+              <li class="page-item"><a class="page-link" href="?page=1">Început</a></li>
+              <li class="page-item"><a class="page-link" href="?page={{posts.previous_page_number}}">{{posts.previous_page_number}}</a></li>
+
+              {% endif %}
+              <li class="page-item disabled"><a class="page-link" href="#">{{posts.number}}</a></li>
+
+              {% if posts.has_next %}
+              <li class="page-item"><a class="page-link" href="?page={{posts.next_page_number}}">{{posts.next_page_number}}</a></li>
+              <li class="page-item"><a class="page-link" href="?page={{posts.paginator.num_pages}}">Sfârşit</a></li>
+              {% endif %}
+            </ul>
+        </nav>
+
+        {% endif %}
+
+        
+    </div>
+    </div>
+</section>
+
+{% endblock %}

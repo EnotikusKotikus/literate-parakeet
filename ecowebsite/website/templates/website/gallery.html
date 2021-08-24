@@ -1,0 +1,58 @@
+{%extends 'website/base.html'%}
+{%load static%}
+
+{% block content%}
+
+<div class="page-top-wrapper">
+    <div class="gallery page-top-welcome">
+        <div class="page-top-text">
+            <h2 class="billboard-text">Galerie</h2>
+        </div>
+
+    </div>
+</div>
+<div class="masonry ">
+  <div class="infinite-container">
+        {% for image in images%}
+            
+                <a class="infinite-item" href="{{image.img.url}}"> <img class="item" src="{{image.img.url}}"> </a>
+      
+        {% endfor %}
+
+  </div>
+
+</div>
+
+
+
+
+{% if images.has_next %}
+  <a id="waypoint" class="infinite-more-link" href="?page={{images.next_page_number}}"></a>
+{% endif %}
+
+<script>
+    var infinite = new Waypoint.Infinite({
+      element: $('.infinite-container')[0],
+      
+      
+      offset: 'bottom-in-view',
+
+      onBeforePageLoad: function () {
+
+      },
+    });
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

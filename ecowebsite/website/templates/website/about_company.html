@@ -1,0 +1,31 @@
+{%extends 'website/base.html'%}
+{%load static%}
+{% block content%}
+
+
+<div class="page-top-wrapper">
+    <div class="about-us page-top-welcome">
+        <div class="page-top-text">
+            <h2 class="billboard-text">Despre Noi</h2>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+<section id="about-company">
+   
+
+    <div class="description">
+        {{text.content|safe}}
+    </div>
+
+
+</section>
+
+
+{% endblock %}

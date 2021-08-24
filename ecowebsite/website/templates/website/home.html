@@ -1,0 +1,167 @@
+{%extends 'website/base.html'%}
+{% load static %}
+
+
+{%block content%}
+
+
+
+<section id="intro-carousel">
+
+<div id="carouselExampleIndicators" class="carousel carousel-fade" data-interval="10000" pause="hover" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    </ol>
+    <div class="intro-images carousel-inner">
+        <div class="carousel-item active">
+            <img class="intro-image"
+                src="{%static 'img/nature-4463919_1920.jpg'%}">
+        </div>
+        <div class="carousel-item">
+            <img class="intro-image"
+                src="{%static 'img/moldova-2553433_1920.jpg'%}">
+        </div>
+
+    </div>
+</div>
+</section>
+
+<section id="purpose">
+    <div class="purpose-container">
+        <div class="row">
+            <div class="col-lg-7   first item">
+                <img class="purpose-img" src="{%static 'img/saharna.png'%}">
+            </div>
+
+            <div class="col-lg-5 col-md-12 second-item">
+                <div class="green-box">
+                    <h2 class="box-title title">O Gândire Ecologică Pentru un Viitor mai Bun</h2>
+                    <h4 class="box-text text">Scopul nostru este promovarea schimbărilor pe plan ecologic în societate</h4> 
+                </div>
+                <div class="billboard-text projects-button">
+                    <a href="/projects"><button type="button" class="btn  btn-block btn-lg">Proiecte actuale</button></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="services">
+
+    <div class="services-title">
+        <h2 class="billboard-text">Serviciile Noastre</h2>
+    </div>
+
+
+    <div class="services-poster-wrapper">
+        <div class="biodiversity-conservation services-poster-content">
+            <div class="services-poster-text">
+                <h4 class="billboard-text">Crearea proiectelor pentru </h4>
+                <h2 class="billboard-text"> Conservarea Biodiversităţii</h2>
+            </div>
+    
+        </div>
+    </div>
+
+
+    <div class="services-poster-wrapper">
+        <div class="quality-monitoring services-poster-content">
+            <div class="services-poster-text">
+                <h2 class="billboard-text"> Monitorizarea Calităţii</h2>
+                <h4 class="billboard-text">mediului ambiant</h4>
+            </div>
+    
+        </div>
+    </div>
+
+    <div class="services-poster-wrapper">
+        <div class="field-research services-poster-content">
+            <div class="services-poster-text">
+            <h4 class="billboard-text">organizarea</h4>
+            <h2 class="billboard-text">Expediţiilor de Cercetare</h2>
+            <h4 class="billboard-text">a laboratoarelor de câmp</h4>
+            </div>
+    
+        </div>
+    </div>
+
+    <div class="services-poster-wrapper">
+        <div class="training-courses services-poster-content">
+            <div class="services-poster-text">
+                <h4 class="billboard-text">organizarea</h4>
+                <h2 class="billboard-text">Cursurilor de Training</h2>
+            </div>
+    
+        </div>
+    </div>
+
+
+</section>
+
+
+<section id="News-Project-Posts">
+    <h2 class="section-title billboard-text">Proiecte & Noutăţi</h2>
+
+
+
+<div class="posts-wrapper">
+    <div class="posts-items">
+        <div class="posts-row">
+
+            {% for key, values in posts.items %}
+                
+                {% for post in values%}
+                <div class="post-item col-lg-4 col-md-12">
+                    <a href="/{{key}}{% if post.tag.slug  %}/{{post.tag.slug}}{% endif %}/{{post.slug}}">
+                    <div class="post-wrapper">
+                        
+                        <div class="text-wrapper">
+                            <div class="top-text">
+                                <i class="far fa-clock"></i>
+                                <span class="post-date">{{post.date_created}}</span>
+                            </div>
+                            <div class="bottom-text">
+                                <h3 class="title">{{post.title}}</h4>
+                            </div>
+                        </div>
+
+                        <div class="background-image">
+                            <div class="post-img-wrapper">
+                                    <img class="post-img" src="{{post.cover_photo.url}}">
+                            </div>
+                        </div>
+                        
+                    </div>
+                    </a>
+                </div>
+                {% endfor %}
+                
+            {% endfor %}
+
+
+
+
+            
+        </div>
+    </div>
+</div>
+
+
+</section>
+
+<section id="pre-footer">
+        <div class="pre-footer-row">
+            <div class="row-item col-lg-8 col-md-8">
+                <h2 class="billboard-text" >Aveţi un proiect ? </h2>
+            </div>
+            <div class="row-item col-lg-4 col-md-4">
+                <a href="/contact_us"><button type="button"   class="btn btn-success btn-md btn-inline billboard-text">Contactaţi-ne</button></a>
+            </div>
+        </div>
+        
+
+</section>
+{%endblock%}
+

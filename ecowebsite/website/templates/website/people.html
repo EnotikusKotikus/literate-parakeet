@@ -1,0 +1,73 @@
+{%extends 'website/base.html'%}
+{%load static%}
+
+{% block content%}
+
+<div class="page-top-wrapper">
+    <div class="our-people page-top-welcome">
+        <div class="page-top-text">
+            <h2 class="billboard-text">Oamenii Noştrii</h2>
+        </div>
+    </div>
+</div>
+
+
+<div class="our-people-main">
+    <div class="container-fluid">
+        <div class="row">
+
+
+            {% for person in people %}
+
+            <div class="col-lg-3 col-md-12 ">
+
+                <div class="person-wrapper">
+                    <div class="person-top">
+                        <div class="person-img">
+                            <img  itemprop="image" src="{{person.img.url}}" alt="{{person.name}}">
+                        </div>
+                    </div>
+
+                    <div class="person-bottom">
+                        <div class="person-name">
+                            <h5>{{person.name}}</h5>
+                        </div>
+                        {% if person.position%}
+                        <div class="person-position">
+                            <p>{{person.position}}</p>
+                        </div>
+                        {% endif %}
+                        {% if person.email%}
+                        <div class="person-email">
+                            <p><span class="email">Email: </span><a href = "mailto:{{person.email}}">{{person.email}}</a></p>
+                        </div>
+                        {% endif %}
+                        {% if person.phone%}
+                        <div class="person-phone">
+                            <p><span class="phone">Telefon: </span><a href="tel:{{person.phone}}">{{person.phone}}</a></p>
+
+                           
+                        </div> 
+                        {% endif %}
+                    </div>
+                    
+                    <br>
+
+                </div>
+            </div>
+
+            {% endfor %}
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

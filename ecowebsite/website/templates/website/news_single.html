@@ -1,0 +1,86 @@
+{%extends 'website/base.html'%}
+{%load static%}
+
+{% block content%}
+<head>
+    <title>{{post.title}}</title>
+</head>
+<section id="post-single">
+    <div class="title_wrapper news-title-wrapper">
+         <p class="post-title title" itemprop="headline">{{post.title}}</p>
+    </div>
+
+
+    <div class="main-block news-post">
+        <div class="post-data">
+            <p>Postat pe {{post.date_created}}</p>
+        </div>
+        <div class="post-text text">
+            {{post.content|safe}}
+        </div>
+    </div>
+
+
+    {% if photos%}
+
+    <section id="carousel-section">
+    
+        <div id="carouselPostPhotos" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+    
+                {% for number in number_photos %}
+    
+                {% if forloop.first %}
+                    <li data-target="#carouselPostPhotos" data-slide-to="{{number}}" class="active"></li>
+                {% else %}
+                    <li data-target="#carouselPostPhotos" data-slide-to="{{number}}"></li>
+                {% endif %}
+    
+                {% endfor %}
+            </ol>
+            <div class="carousel-inner">
+              {% for photo in photos%}
+    
+              {% if forloop.first %}
+              <div class="carousel-item active">
+                  <a href="{{photo.image.url}}"><img class="d-block w-100" src="{{photo.image.url}}"></a>
+              </div>
+              {% else %}
+              <div class="carousel-item">
+                  <a href="{{photo.image.url}}"><img class="d-block w-100" src="{{photo.image.url}}"> </a>
+              </div>
+              {% endif %}
+    
+              {% endfor%}
+    
+            </div>
+            <a class="carousel-control-prev" href="#carouselPostPhotos" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselPostPhotos" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+    
+    </section>
+    
+    {% endif %}
+    
+
+
+{% if files %}
+<h6 class="file-aditional-text">Material adiţional:</h6>
+    {% for item in files%}
+
+    <div class="file-aditional">
+        <a class="billboard-text" href="{{item.file.url}}">{{item.file}}</a>
+    </div>
+
+
+    {% endfor %}
+{% endif %}
+
+</section>
+{% endblock%}

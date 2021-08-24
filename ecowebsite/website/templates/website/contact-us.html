@@ -1,0 +1,144 @@
+{%extends 'website/base.html'%}
+{%load static%}
+
+{% block content%}
+
+<div class="page-top-wrapper">
+    <div class="contact-us page-top-welcome">
+        <div class="page-top-text">
+            <h2 class="billboard-text">Contactele Noastre</h2>
+        </div>
+    </div>
+</div>
+<div class="main">
+    <div class="contact-us-main-wrapper">
+        <div class="container ">
+        
+           
+          
+            
+
+            <div class="row content-wrapper">
+
+                <div class="col-lg-6 col-md-12 col-sm-12 first-container-content">
+
+                    {% if was_sent%}
+
+                    <div class="alert alert-success" role="alert">
+                        Mesajul a fost expediat cu succes!
+                    </div>
+        
+                    {% endif %}
+
+                    <h2>Expediază-ne un mesaj</h2>
+
+                    <form action="/contact_us/" method="POST">
+                    {% csrf_token %}
+                    <p><input id="user_name" class="user_name input_field small-field" type="text" name="user_name" placeholder="Nume"></p>
+                    <hr>
+                    <p><input id="user_email" class="user_email input_field small-field" type="email" name="user_email" placeholder="Email"></p>
+                    <hr>
+                    <p><input id="user_phone" type="tel" class="user_phone input_field small-field" name="user_phone" placeholder="Telefon"></p>
+                    <hr>
+                    <p><textarea id="user_message" class="user_message input_field big-field" name="user_message" cols="35" rows="6" placeholder="Mesaj"></textarea></p>
+                    <hr>
+
+                    <input type="submit" class="user_submit input_field " value="Expediază">
+
+                    </form>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 second-container-content">
+                    <div class="box-wrapper">
+                        <div class="box">
+                            <ul class="first-list">
+                                <li> <i class="far fa-envelope fa-2x"></i>  <span class="list-text">ecologisticamd@gmail.com</span> </li>
+                                <li><i class="far fa-phone-square-alt fa-2x"></i> <span class="list-text">37362432432</span></li>
+                                <li><i class="far fa-map fa-2x"></i> <span class="list-text">Lev Tolstoi 24/1  of. 101</span></li>
+                            </ul>
+
+                            <ul class="second-list">
+                                <li><i class="far fa-clock fa-2x"></i> <span class="list-text">9:00–17:00   Luni-Vineri</span></li>
+                                <li> <i class="fal fa-clock fa-2x"></i> <span class="list-text">11:00–15:00  Sâmbăta & Duminica</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="map-wrapper">
+
+    <div class="map-container">
+
+        
+    <div id="map"></div>
+       
+    </div>
+
+
+
+
+</div>
+
+<script>
+    mapboxgl.accessToken = "{{mapbox_access_token}}";
+const map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/light-v10',
+center: [28.84161826377683, 47.01064523963786],
+zoom: 16
+});
+ 
+map.on('load', () => {
+// Add an image to use as a custom marker
+map.loadImage( 
+"{%static 'img/icons8-marker-30.png'%}",
+(error, image) => {
+if (error) throw error;
+map.addImage('custom-marker', image);
+// Add a GeoJSON source with 2 points
+map.addSource('points', {
+'type': 'geojson',
+'data': {
+'type': 'FeatureCollection',
+'features': [
+{
+'type': 'Feature',
+'geometry': {
+'type': 'Point',
+'coordinates': [  
+28.84161826377683, 47.01064523963786
+]
+},
+'properties': {
+'title': 'CCP EcoLogistica'
+}
+}]
+}
+});
+ 
+// Add a symbol layer
+map.addLayer({
+'id': 'points',
+'type': 'symbol',
+'source': 'points',
+'layout': {
+'icon-image': 'custom-marker',
+// get the title name from the source's "title" property
+'text-field': ['get', 'title'],
+'text-font': [
+'Open Sans Semibold',
+'Arial Unicode MS Bold'
+],
+'text-offset': [0, 1.25],
+'text-anchor': 'top'
+}
+});
+}
+);
+});
+
+</script>
+{% endblock %}

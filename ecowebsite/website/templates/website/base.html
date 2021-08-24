@@ -1,0 +1,128 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% static 'img/cropped-ecologistica-e1613050218381.png' %}">
+
+    <!-- Imporing Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+    <!-- Importig styles -->
+    <link rel="stylesheet" href="{%static "css/styles.css"%}">
+
+    <!-- Importing google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Castoro&family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree&family=Chivo&family=Lexend&family=PT+Sans+Caption&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Map -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js"></script>
+  
+    <!-- Importing JavaScript -->
+    <script src="{%static 'js/javascript.js'%}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/static/js/jquery.waypoints.min.js"></script>
+    <script src="/static/js/infinite.min.js"></script>
+
+
+
+
+
+    <!-- Importing Font Awesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+
+    <title>Eco Logistica</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <a class="navbar-brand ml-md-5" href="/">
+              <img class="logo-img" itemprop="image" src="{%static 'img/cropped-ecologistica-e1613050218381.png'%}">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+    
+            <div class="collapse navbar-collapse justify-content-between " id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto mb-md-1 mt-md-1">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Acasă </a>
+                    </li>
+                    
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/projects">Proiecte</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/news">Noutăţi</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/gallery">Galerie</a>
+                    </li>
+                   
+                   
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAbout" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Despre Noi
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownAbout">
+                          <a class="dropdown-item" href="/company">A.O CCP „Eco Logistica”</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="/people">Oamenii noştrii</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="/contact_us">Contacte</a>
+                        </div>
+                      </li>
+    
+                      
+                </ul>
+    
+    
+            </div>
+        </nav>
+    </header>
+
+{% block content %}
+
+{% endblock %}
+
+<section id="footer">
+<div class="footer-wrapper">
+  <div class="social-media-icon">
+    <a href="https://www.facebook.com/CCP-Eco-Logistica-100447138325686/"><i class="fab fa-facebook fa-2x"></i></a>
+  </div>
+  <div class="contact-me">
+    <a class="contat-me-link" href="#">Creat de Cristi</a>
+  </div>
+</div>
+
+
+</section>
+
+</body>
+</html>
